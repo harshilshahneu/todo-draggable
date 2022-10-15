@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="dist/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="user-profile">
+            <div class="user-profile__info">
+                <h1 class="user-profile__name">Hello Jane Doe</h1>
+                <div class="user-profile__tasks">
+                 
+                </div>
+            </div>
+            <div class="user-profile__image">
+                <img src="img/user_profile.png" alt="user">
+            </div>
+        </div>
+        <ul class="task-list"></ul>
+        <div class="add-task">
+            <button id="add-button" onclick="openAddTaskForm()">+</button>
+        </div>
+    </div>
+    <div class="dialog">
+        <div class="close-button">
+            <button id="close-dialog" onclick="closeDialog()">x</button> 
+        </div>
+        <form class="form">
+            <h3>
+                Please Add a new task
+            </h3>
+            <div class="form__group">
+                <label for="title">Title</label>
+                <input type="title" id="title" name="title">
+            </div>
+            <div class="form__group">
+                <label for="description">Description</label>
+                <input type="text" id="description" name="description">
+            </div>
+            <div class="form__group">
+                <label for="due-date">Due Date</label>
+                <input type="date" id="due-date" name="due-date">
+            </div>
+            <div class="form__group">
+                <label for="due-time">Due Date</label>
+                <input type="time" id="due-time" name="due-time">
+            </div>
+        </form>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
