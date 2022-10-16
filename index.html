@@ -17,7 +17,19 @@
                 <img src="img/user_profile.png" alt="user">
             </div>
         </div>
-        <ul class="task-list"></ul>
+        <ul class="task-list">
+            <li id="test">
+                <div class="task-completion">
+                    <img src="./img/checked.png" alt="">
+                </div>
+                <div class="task-details">
+                    <div class="task-header">Complete Assignment 1 of AED</div>
+                    <div class="task-description">It is very important assignment</div>
+                    <div class="task-due-date">2019-10-10</div>
+                    <div class="task-due-time">12:00 AM</div>
+                </div>
+            </li>
+        </ul>
         <div class="add-task">
             <button id="add-button" onclick="openAddTaskForm()">+</button>
         </div>
@@ -49,5 +61,37 @@
         </form>
     </div>
     <script src="js/script.js"></script>
+    <script>
+        const taskDetails = document.querySelector('#test>.task-details');
+        // console.log(taskDetails);
+        taskDetails.addEventListener('mousedown', event => {
+
+            const startPoint = event.clientX;
+            let completedFlag = 0;
+
+            document.addEventListener('mousemove', mouseMoveHandler);
+            document.addEventListener('mouseup', mouseUpHandler);
+
+            function mouseMoveHandler(e){
+                let currentPoint = e.clientX;
+                diff = startPoint - currentPoint;
+                // console.log(diff);
+                if(diff <= 0 && diff >= -73) {
+                    taskDetails.style.transform = `translateX(${-diff}px)`;
+                    if(diff === -73)
+                        completedFlag = 1;
+                }
+               
+            }
+            function mouseUpHandler(e){
+                console.log(diff)
+                if(completedFlag)
+                    console.log('task completed');
+                taskDetails.style.transform = `translateX(0px)`;
+                document.removeEventListener('mouseup', mouseUpHandler);
+                document.removeEventListener('mousemove', mouseMoveHandler);
+            }
+        })
+    </script>
 </body>
 </html>

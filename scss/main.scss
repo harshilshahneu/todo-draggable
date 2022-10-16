@@ -32,16 +32,42 @@
     .task-list {
         list-style: none;
         padding: 0;
+        height: 63vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: 63vh;
         li {
             margin: 18px 0;
-            .task-header {
-                font-size: 1.5em;
-                font-weight: bold;
-                margin-bottom: 4px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            position: relative;
+            .task-details {
+                padding: 20px;
+                position: relative;
+                background-color: white;
+                transition: all 0.3s ease;
+                .task-header {
+                    font-size: 1.5em;
+                    font-weight: bold;
+                    margin-bottom: 4px;
+                }
+                .task-due-date {
+                    font-size: 1em;
+                    color: rgb(161, 154, 154);
+                }
             }
-            .task-due-date {
-                font-size: 1em;
-                color: rgb(161, 154, 154);
+            .task-completion {
+                top: 0;
+                left: 0;
+                height: 100%;
+                display: flex;
+                padding: 0px 18px;
+                align-items: center;
+                background: #3ebc3e;
+                position: absolute;
+                img {
+                    height: 30%;
+                }
             }
         }
     }
