@@ -18,23 +18,22 @@
             </div>
         </div>
         <ul class="task-list">
-            <li id="test">
+            <!-- <li id="test">
                 <div class="task-completion">
                     <img src="./img/checked.png">
                 </div>
                 <div class="task">
                     <div class="task-title">
-                        <div>Task 1</div>
+                        <div>Complete Assignment 1 of AED</div>
                         <button id="add">+</button>
                     </div>
                     <div class="task-details">
-                        <div class="task-header">Complete Assignment 1 of AED</div>
                         <div class="task-description">It is very important assignment</div>
                         <div class="task-due-date">2019-10-10</div>
                         <div class="task-due-time">12:00 AM</div>
                     </div>
                 </div>
-            </li>
+            </li> -->
         </ul>
         <div class="add-task">
             <button id="add-button" onclick="openAddTaskForm()">+</button>
@@ -67,47 +66,7 @@
         </form>
     </div>
     <script src="js/script.js"></script>
-    <script>
-        const taskDetails = document.querySelector('#test>.task');
-        taskDetails.addEventListener('mousedown', event => {
-
-            const startPoint = event.clientX;
-            let completedFlag = 0;
-
-            document.addEventListener('mousemove', mouseMoveHandler);
-            document.addEventListener('mouseup', mouseUpHandler);
-
-            function mouseMoveHandler(e){
-                let currentPoint = e.clientX;
-                diff = startPoint - currentPoint;
-             
-                if(diff <= 0 && diff >= -document.querySelector('#test>.task-completion').offsetWidth) {
-                    taskDetails.style.transform = `translateX(${-diff}px)`;
-                    if(diff ===  -document.querySelector('#test>.task-completion').offsetWidth)
-                        completedFlag = 1;
-                }
-               
-            }
-            function mouseUpHandler(e){
-              
-                if(completedFlag) {
-                  
-                    const node = document.querySelector('#test');
-                    node.style.opacity = 0;
-                  
-                    setTimeout(() => {
-                        document.querySelector('.task-list').appendChild(node);
-                        setTimeout(() => {
-                            node.style.opacity = 1;
-                        }, 10);
-                    }, 300);
-                   
-                }
-                taskDetails.style.transform = `translateX(0px)`;
-                document.removeEventListener('mouseup', mouseUpHandler);
-                document.removeEventListener('mousemove', mouseMoveHandler);
-            }
-        })
+    <!-- <script>
         document.querySelector('#add').addEventListener('click', () => {
             let taskDetails = document.querySelector('#test>.task>.task-details') ;
             if(taskDetails.style.display == 'block') {
@@ -116,6 +75,6 @@
                 taskDetails.style.display = 'block';
             }
         })
-    </script>
+    </script> -->
 </body>
 </html>

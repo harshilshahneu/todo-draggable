@@ -84,14 +84,14 @@
                     padding: 16px;
                     display: flex;
                     justify-content: space-between;
+                    .task-header {
+                        font-size: 1.5em;
+                        font-weight: bold; 
+                    }
                 }
                 .task-details {
                     display: none;
-                    .task-header {
-                        font-size: 1.5em;
-                        font-weight: bold;
-                        margin-bottom: 4px;
-                    }
+                   
                     .task-due-date {
                         font-size: 1em;
                         color: rgb(161, 154, 154);

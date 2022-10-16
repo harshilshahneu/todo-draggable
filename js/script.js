@@ -1,29 +1,113 @@
 let dialogBoundingClientHeight = 0;
 const addButton = document.querySelector('#add-button').style
 
+function dragElement(event) {
+    const element = event.currentTarget;
+    const startPoint = event.clientX;
+    let diff = 0;
+    const id = element.parentElement.id;
+    document.addEventListener('mousemove', mouseMoveHandler);
+    document.addEventListener('mouseup', mouseUpHandler);
+
+    function mouseMoveHandler(e){
+        let currentPoint = e.clientX;
+        diff = startPoint - currentPoint;
+        console.log(element)
+        if(diff <= 0 && diff >= -document.querySelector('#'+ id + '>.task-completion').offsetWidth) {
+            element.style.transform = `translateX(${-diff}px)`;
+        }
+       
+    }
+    function mouseUpHandler(e){
+        if(diff <=  -document.querySelector('#'+ id + '>.task-completion').offsetWidth) {
+            const node = document.querySelector('#' + id);
+            node.style.opacity = 0;
+          
+            setTimeout(() => {
+                document.querySelector('.task-list').appendChild(node);
+                setTimeout(() => {
+                    node.style.opacity = 1;
+                }, 10);
+            }, 300);
+           
+        }
+        element.style.transform = `translateX(0px)`;
+        document.removeEventListener('mouseup', mouseUpHandler);
+        document.removeEventListener('mousemove', mouseMoveHandler);
+    }
+}
+
 function createTaskElement(element) {
     const li = document.createElement('li');
-    li.setAttribute('id', element.id);
+    li.setAttribute('id', 'id_' + element.id);
+    li.setAttribute('data', element.status);
+
+    const taskCompletion = document.createElement('div');
+    taskCompletion.setAttribute('class', 'task-completion');
+
+    const checkMark = document.createElement('img');
+    checkMark.setAttribute('src', 'img/checked.png');
+
+    taskCompletion.appendChild(checkMark);
+
+    const task = document.createElement('div');
+    task.setAttribute('class', 'task');
+
+    const taskTitle = document.createElement('div');
+    taskTitle.setAttribute('class', 'task-title');
 
     const taskHeader = document.createElement('div');
     taskHeader.setAttribute('class', 'task-header');
     taskHeader.innerHTML = element.title;
-    li.appendChild(taskHeader);
+
+    const collapsibleButton = document.createElement('button');
+    collapsibleButton.setAttribute('class', 'collapsible');
+    collapsibleButton.setAttribute('id', 'collapsible-' + element.id);
+    collapsibleButton.innerHTML = '+';
+
+    collapsibleButton.addEventListener('click', e => {
+        console.log(e.currentTarget.parentElement.parentElement.parentElement.id);
+        const id = e.currentTarget.parentElement.parentElement.parentElement.id;
+        const collapsible = document.querySelector('#' + id + '>.task>.task-details');
+        console.log(collapsible);
+        if(collapsible.style.display === 'block') {
+            collapsible.style.display = 'none';
+            e.currentTarget.innerHTML = '+';
+        }
+        else {
+            collapsible.style.display = 'block';
+            e.currentTarget.innerHTML = '-';
+        }
+    })
+
+    taskTitle.appendChild(taskHeader);
+    taskTitle.appendChild(collapsibleButton);
+
+    const taskDetails = document.createElement('div');
+    taskDetails.setAttribute('class', 'task-details');
 
     const taskDescription = document.createElement('div');
     taskDescription.setAttribute('class', 'task-description');
     taskDescription.innerHTML = element.description;
-    li.appendChild(taskDescription);
 
     const taskDueDate = document.createElement('div');
     taskDueDate.setAttribute('class', 'task-due-date');
     taskDueDate.innerHTML = element.due_date;
-    li.appendChild(taskDueDate);
 
     const taskDueTime = document.createElement('div');
     taskDueTime.setAttribute('class', 'task-due-time');
     taskDueTime.innerHTML = element.due_time;
-    li.appendChild(taskDueTime);
+
+    taskDetails.appendChild(taskDescription);
+    taskDetails.appendChild(taskDueDate);
+    taskDetails.appendChild(taskDueTime);
+
+    task.appendChild(taskTitle);
+    task.appendChild(taskDetails);
+    task.addEventListener('mousedown', dragElement);
+
+    li.appendChild(taskCompletion);
+    li.appendChild(task);
    
     document.querySelector('.task-list').appendChild(li);
 }
@@ -61,10 +145,8 @@ function openAddTaskForm() {
     }
     else {
         dialogStyle.display = 'block';
-        // dialogStyle.position = 'fixed';
         setTimeout(() => {
             const dialogBoundingClientHeight = document.querySelector('.dialog').getBoundingClientRect().y
-            console.log(dialogBoundingClientHeight)
             dialogStyle.transform = 'translateY('  + (-dialogBoundingClientHeight) + 'px)';
             dialogStyle.opacity = 1;
             addButton.width = '250px';

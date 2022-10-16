@@ -5,7 +5,7 @@
         "description": "It is very important assignment",
         "due_date": "2019-10-10",
         "due_time": "12:00 AM",
-        "completed": "false"
+        "status": "open"
     },
     {
         "id": "2",
@@ -13,7 +13,7 @@
         "description": "It is very important assignment",
         "due_date": "2019-10-10",
         "due_time": "12:00 AM",
-        "completed": "false"
+        "status": "open"
     },
     {
         "id": "3",
@@ -21,6 +21,6 @@
         "description": "It is very important assignment",
         "due_date": "2019-10-10",
         "due_time": "12:00 AM",
-        "completed": "false"
+        "status": "open"
     }
 ]
