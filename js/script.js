@@ -70,12 +70,12 @@ function createTaskElement(element) {
         const id = e.currentTarget.parentElement.parentElement.parentElement.id;
         const collapsible = document.querySelector('#' + id + '>.task>.task-details');
         console.log(collapsible);
-        if(collapsible.style.display === 'block') {
-            collapsible.style.display = 'none';
+        if(collapsible.style.maxHeight) {
+            collapsible.style.maxHeight = null;
             e.currentTarget.innerHTML = '+';
         }
         else {
-            collapsible.style.display = 'block';
+            collapsible.style.maxHeight = collapsible.scrollHeight + 'px';
             e.currentTarget.innerHTML = '-';
         }
     })

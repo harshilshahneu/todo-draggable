@@ -90,8 +90,9 @@
                     }
                 }
                 .task-details {
-                    display: none;
-                   
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: all 0.3s ease;
                     .task-due-date {
                         font-size: 1em;
                         color: rgb(161, 154, 154);
