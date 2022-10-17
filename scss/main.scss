@@ -42,34 +42,6 @@
             border-radius: 5px;
             position: relative;
             transition: all 0.3s ease;
-            // .task-title {
-            //     position: relative;
-            //     background: white;
-            //     padding: 16px;
-            //     display: flex;
-            //     justify-content: space-between;
-            // }
-            // .task-details {
-            //     display: none;
-            //     padding: 20px;
-            //     position: relative;
-            //     background-color: white;
-            //     cursor: grab;
-            //     user-select: none;
-            //     transition: all 0.3s ease;
-            //     &:active {
-            //         cursor: grabbing;
-            //     }
-            //     .task-header {
-            //         font-size: 1.5em;
-            //         font-weight: bold;
-            //         margin-bottom: 4px;
-            //     }
-            //     .task-due-date {
-            //         font-size: 1em;
-            //         color: rgb(161, 154, 154);
-            //     }
-            // }
             .task {
                 padding: 20px;
                 position: relative;
@@ -87,6 +59,9 @@
                     .task-header {
                         font-size: 1.5em;
                         font-weight: bold; 
+                    }
+                    .collapsible {
+                        pointer-events: auto;
                     }
                 }
                 .task-details {
@@ -160,5 +135,11 @@
         justify-content: center;
         align-items: center;
         height: 60%;
+        .form__group {
+            .error {
+                color: red;
+                font-size: 0.8rem;
+            }
+        }
     }
 }

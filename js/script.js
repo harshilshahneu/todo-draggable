@@ -2,6 +2,7 @@ let dialogBoundingClientHeight = 0;
 const addButton = document.querySelector('#add-button').style
 
 function dragElement(event) {
+    
     const element = event.currentTarget;
     const startPoint = event.clientX;
     let diff = 0;
@@ -12,7 +13,6 @@ function dragElement(event) {
     function mouseMoveHandler(e){
         let currentPoint = e.clientX;
         diff = startPoint - currentPoint;
-        console.log(element)
         if(diff <= 0 && diff >= -document.querySelector('#'+ id + '>.task-completion').offsetWidth) {
             element.style.transform = `translateX(${-diff}px)`;
         }
@@ -22,16 +22,22 @@ function dragElement(event) {
         if(diff <=  -document.querySelector('#'+ id + '>.task-completion').offsetWidth) {
             const node = document.querySelector('#' + id);
             node.style.opacity = 0;
-          
+            node.setAttribute('data', 'completed');
+            element.style.transform = `translateX(${document.querySelector('#'+ id + '>.task-completion').offsetWidth}px)`;
+            element.style.pointerEvents = 'none';
+
             setTimeout(() => {
-                document.querySelector('.task-list').appendChild(node);
+                document.querySelector('.task-list').appendChild(node);  
                 setTimeout(() => {
                     node.style.opacity = 1;
                 }, 10);
             }, 300);
            
         }
-        element.style.transform = `translateX(0px)`;
+        else {
+            element.style.transform = `translateX(0px)`;
+           
+        }
         document.removeEventListener('mouseup', mouseUpHandler);
         document.removeEventListener('mousemove', mouseMoveHandler);
     }
@@ -66,10 +72,8 @@ function createTaskElement(element) {
     collapsibleButton.innerHTML = '+';
 
     collapsibleButton.addEventListener('click', e => {
-        console.log(e.currentTarget.parentElement.parentElement.parentElement.id);
         const id = e.currentTarget.parentElement.parentElement.parentElement.id;
         const collapsible = document.querySelector('#' + id + '>.task>.task-details');
-        console.log(collapsible);
         if(collapsible.style.maxHeight) {
             collapsible.style.maxHeight = null;
             e.currentTarget.innerHTML = '+';
@@ -128,20 +132,52 @@ function openAddTaskForm() {
         const due_date = document.querySelector('#due-date').value;
         const due_time = document.querySelector('#due-time').value;
 
-        //@TODO add validation
+        let valid = true;
+        if(!title) {
+            valid = false;
+            document.querySelector('#title').style.border = '1px solid red';
+            document.getElementById('title-error').innerHTML = 'Title is required';
+        }
+        if(!description) {
+            valid = false;
+            document.querySelector('#description').style.border = '1px solid red';
+            document.getElementById('description-error').innerHTML = 'Description is required';
+        }
+        if(!due_date) {
+            valid = false;
+            document.querySelector('#due-date').style.border = '1px solid red';
+            document.getElementById('due-date-error').innerHTML = 'Due date is required';
+        }
+        if(!due_time) {
+            valid = false;
+            document.querySelector('#due-time').style.border = '1px solid red';
+            document.getElementById('due-time-error').innerHTML = 'Due time is required';
+        }
 
-        const data = {
-            id: document.querySelectorAll('.task-list li').length + 1,
-            title,
-            description,
-            due_date,
-            due_time,
-            status: "open"
-        };
-        createTaskElement(data);
-        document.querySelector('.form').reset();
-        document.querySelector('.user-profile__tasks').innerHTML = "You have " + document.querySelectorAll('.task-list li').length + " tasks";
-        closeDialog();
+        if(valid){
+            const data = {
+                id: document.querySelectorAll('.task-list li').length + 1,
+                title,
+                description,
+                due_date,
+                due_time,
+                status: "open"
+            };
+            createTaskElement(data);
+
+            document.querySelector('#title').style.border = '1px solid black';
+            document.getElementById('title-error').innerHTML = '';
+            document.querySelector('#description').style.border = '1px solid black';
+            document.getElementById('description-error').innerHTML = '';
+            document.querySelector('#due-date').style.border = '1px solid black';
+            document.getElementById('due-date-error').innerHTML = '';
+            document.querySelector('#due-time').style.border = '1px solid black';
+            document.getElementById('due-time-error').innerHTML = '';
+            document.querySelector('.form').reset();
+
+            document.querySelector('.user-profile__tasks').innerHTML = "You have " + document.querySelectorAll('.task-list li').length + " tasks";
+            closeDialog();
+        }
     }
     else {
         dialogStyle.display = 'block';
