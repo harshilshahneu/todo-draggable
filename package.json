@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/neu-mis-info6150-fall-2022/assignment-6-harshilshahneu/issues"
   },
-  "homepage": "https://github.com/neu-mis-info6150-fall-2022/assignment-6-harshilshahneu#readme"
+  "homepage": "https://github.com/neu-mis-info6150-fall-2022/assignment-6-harshilshahneu#readme",
+  "dependencies": {
+    "sass": "^1.55.0"
+  }
 }
