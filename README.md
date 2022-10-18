@@ -21,5 +21,5 @@ package.json - contains the dependencies for the program <br>
 ## Installation
 
 Run npm install <br>
-Run sass scss/main.scss dist/css/styles.css
+Run sass scss/main.scss dist/css/styles.css <br>
 Open index.html in your browser
