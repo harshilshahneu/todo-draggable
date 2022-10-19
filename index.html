@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Document</title>
+    <title>My TODO app</title>
     <link rel="stylesheet" href="dist/css/styles.css">
 </head>
 <body>
+    <!-- Container div for the TODO app -->
     <div class="container">
+
+        <!-- User Greeting message -->
         <div class="user-profile">
             <div class="user-profile__info">
                 <h1 class="user-profile__name">Hello Jane Doe</h1>
@@ -17,17 +20,25 @@
                 <img src="img/user_profile.png" alt="user">
             </div>
         </div>
-        <ul class="task-list">
-           
-        </ul>
+
+        <!-- Fixed height list where Todo asks are appended or marked as complete -->
+        <ul class="task-list"></ul>
+
+        <!-- Add new task button, button opens a dialog or adds a task to the list based on the UI state -->
         <div class="add-task">
             <button id="add-button" onclick="openAddTaskForm()">+</button>
         </div>
     </div>
+
+    <!-- Add task dialog box -->
     <div class="dialog">
+
+        <!-- Button to hide the form -->
         <div class="close-button">
             <button id="close-dialog" onclick="closeDialog()">x</button> 
         </div>
+
+        <!-- Form to input new task values -->
         <form class="form">
             <h3>
                 Please Add a new task
@@ -54,6 +65,8 @@
             </div>
         </form>
     </div>
+
+    <!-- Todo app entry point -->
     <script type="module" src="js/script.js"></script>
 </body>
 </html>
