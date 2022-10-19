@@ -52,6 +52,17 @@
                 &:active {
                     cursor: grabbing;
                 }
+                .completed-task-tag {
+                    display: none;
+                    justify-content: end;
+                  
+                    div {
+                        color: white;
+                        background-color: #3ebc3e;
+                        padding: 5px 10px;
+                        border-radius: 5px;
+                    }
+                }
                 .task-title {
                     padding: 16px;
                     display: flex;

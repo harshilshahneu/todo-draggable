@@ -23,10 +23,11 @@ function dragElement(event) {
             const node = document.querySelector('#' + id);
             node.style.opacity = 0;
             node.setAttribute('data', 'completed');
-            element.style.transform = `translateX(${document.querySelector('#'+ id + '>.task-completion').offsetWidth}px)`;
+            
             element.style.pointerEvents = 'none';
 
             setTimeout(() => {
+                element.firstChild.style.display = 'flex';
                 document.querySelector('.task-list').appendChild(node);  
                 setTimeout(() => {
                     node.style.opacity = 1;
@@ -34,10 +35,7 @@ function dragElement(event) {
             }, 300);
            
         }
-        else {
-            element.style.transform = `translateX(0px)`;
-           
-        }
+        element.style.transform = `translateX(0px)`;
         document.removeEventListener('mouseup', mouseUpHandler);
         document.removeEventListener('mousemove', mouseMoveHandler);
     }
@@ -58,6 +56,12 @@ function createTaskElement(element) {
 
     const task = document.createElement('div');
     task.setAttribute('class', 'task');
+
+    const completedTaskTagText = document.createElement('div');
+    completedTaskTagText.innerHTML = 'Completed';
+    const completedTaskTag = document.createElement('div');
+    completedTaskTag.setAttribute('class', 'completed-task-tag');
+    completedTaskTag.appendChild(completedTaskTagText);
 
     const taskTitle = document.createElement('div');
     taskTitle.setAttribute('class', 'task-title');
@@ -106,6 +110,7 @@ function createTaskElement(element) {
     taskDetails.appendChild(taskDueDate);
     taskDetails.appendChild(taskDueTime);
 
+    task.appendChild(completedTaskTag);
     task.appendChild(taskTitle);
     task.appendChild(taskDetails);
     task.addEventListener('mousedown', dragElement);
