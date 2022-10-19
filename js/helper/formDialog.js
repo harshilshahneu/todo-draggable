@@ -33,7 +33,7 @@ export function openAddTaskForm() {
             };
             createTaskElement(data);
             resetForm();
-            document.querySelector('.user-profile__tasks').innerHTML = "You have " + document.querySelectorAll('.task-list li').length + " tasks";
+            document.querySelector('.user-profile__tasks').innerHTML = "You have " + document.querySelectorAll('[data="open"]').length + " tasks remaining";
             closeDialog();
         }
     }

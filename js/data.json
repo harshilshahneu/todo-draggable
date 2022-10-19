@@ -1,26 +1,26 @@
 [
     {
         "id": "1",
-        "title": "Complete Assignment 1 of AED",
-        "description": "It is very important assignment",
-        "due_date": "2019-10-10",
+        "title": "Web Development Mid-term",
+        "description": "Learn the HTML basics, CSS3, and JavaScript",
+        "due_date": "10-26-2022",
         "due_time": "12:00 AM",
         "status": "open"
     },
     {
         "id": "2",
-        "title": "Complete Assignment 2 of AED",
-        "description": "It is very important assignment",
-        "due_date": "2019-10-10",
-        "due_time": "12:00 AM",
+        "title": "Practice Data Structures",
+        "description": "Learn Link List, Stack, Queue, and Tree",
+        "due_date": "12-01-2022",
+        "due_time": "12:00 PM",
         "status": "open"
     },
     {
         "id": "3",
-        "title": "Complete Assignment 3 of AED",
-        "description": "It is very important assignment",
-        "due_date": "2019-10-10",
-        "due_time": "12:00 AM",
+        "title": "Practice Algorithms",
+        "description": "Learn Sorting, Searching, and Graph",
+        "due_date": "12-01-2022",
+        "due_time": "08:00 AM",
         "status": "open"
     }
 ]

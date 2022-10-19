@@ -7,7 +7,7 @@ window.closeDialog = closeDialog;
 const load = event => {
     const data = JSON.parse(event.target.responseText);
     data.forEach(element => createTaskElement(element));
-    document.querySelector('.user-profile__tasks').innerHTML = "You have " + data.length + " tasks";
+    document.querySelector('.user-profile__tasks').innerHTML = "You have " + data.length + " tasks remaining";
 }
 
 const xhr = new XMLHttpRequest();

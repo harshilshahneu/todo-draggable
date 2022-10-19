@@ -45,7 +45,7 @@ export default function createTaskElement(element) {
     li.appendChild(taskCompletion);
     li.appendChild(task);
    
-    document.querySelector('.task-list').appendChild(li);
+    document.querySelector('.task-list').prepend(li);
 }
 
 function setTagAttrAndHTML(tag, className, htmlText, id, data, src) {
@@ -85,13 +85,19 @@ function dragElement(event) {
             const node = document.querySelector('#' + id);
             node.style.opacity = 0;
             node.setAttribute('data', 'completed');
-            
             element.style.pointerEvents = 'none';
 
             setTimeout(() => {
                 element.firstChild.style.display = 'flex';
                 document.querySelector('.task-list').appendChild(node);  
                 setTimeout(() => {
+                    if(document.querySelectorAll('[data="open"]').length) {
+                        document.querySelector('.user-profile__tasks').innerHTML = "You have " + document.querySelectorAll('[data="open"]').length + " tasks remaining";
+                    }
+                    else {
+                        document.querySelector('.user-profile__tasks').innerHTML = "Yay! You have no tasks remaining";
+                    }
+                   // document.querySelector('.user-profile__tasks').innerHTML = "You have " + document.querySelectorAll('[data="open"]').length + " tasks remaining";
                     node.style.opacity = 1;
                 }, 10);
             }, 300);
