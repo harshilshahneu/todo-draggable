@@ -13,16 +13,21 @@
         width: 60px;
         height: 60px;
         font-size: 32px;
+        text-transform: capitalize;
         border-radius: 50%;
         border: none;
-        background: #2876d0;
+        background-color: #2EE59D;
         color: white;
         padding-bottom: 5px;
         z-index: 999;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
         transition: all 0.5s ease-in-out;
         cursor: pointer;
     }
     button:hover {
-        background: #123b70;
+        background-color: #1c875c;
+        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        // background: #123b70;
+        transform: translateY(-7px);
     }
 }

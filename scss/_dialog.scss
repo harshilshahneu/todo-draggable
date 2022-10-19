@@ -25,17 +25,38 @@
             cursor: pointer;
         }
     }
-    .form {
+    .form-wrapper{
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        height: 60%;
-        .form__group {
-            .error {
-                color: red;
-                font-size: 0.8rem;
+        height: 100vh;
+        justify-content: center;
+        h3 {
+            font-size: 32px;
+        }
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            height: 60%;
+            .form__group {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 10px;
+                width: 100%;
+                label {
+                    margin-right: 5px;
+                }
+                input {
+                    flex-grow: 100;
+                }
+                .error {
+                    margin-left: 10px;
+                    color: red;
+                    font-size: 0.8rem;
+                    width: 100%;
+                }
             }
         }
-    }
+    }   
 }

@@ -12,7 +12,7 @@
     list-style: none;
     padding: 0;
     height: 63vh;
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
     max-height: 63vh;
     li {
@@ -34,12 +34,13 @@
             .completed-task-tag {
                 display: none;
                 justify-content: end;
-              
+                font-size: 12px;
+
                 div {
                     color: white;
-                    background-color: #3ebc3e;
-                    padding: 5px 10px;
-                    border-radius: 5px;
+                    background-color: #3ddd9e;
+                    padding: 5px 15px;
+                    border-radius: 10px;
                 }
             }
             .task-title {
@@ -51,7 +52,14 @@
                     font-weight: bold; 
                 }
                 .collapsible {
+                    border: none;
+                 
+                    font-size: 1.5rem;
+                    cursor: pointer;
                     pointer-events: auto;
+                 
+                    min-width: 30px;
+                    min-height: 30px;
                 }
             }
             .task-details {
