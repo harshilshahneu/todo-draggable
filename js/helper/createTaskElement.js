@@ -34,9 +34,9 @@ export default function createTaskElement(element) {
     taskTitle.appendChild(collapsibleButton);
 
     const taskDetails = setTagAttrAndHTML('div', 'task-details', null, null, null, null);
-    const taskDescription = setTagAttrAndHTML('div', 'task-description', element.description, null, null, null);
-    const taskDueDate = setTagAttrAndHTML('div', 'task-due-date', element.due_date, null, null, null);
-    const taskDueTime = setTagAttrAndHTML('div', 'task-due-time', element.due_time, null, null, null);
+    const taskDescription = setTagAttrAndHTML('div', 'task-description', 'Description: ' + element.description, null, null, null);
+    const taskDueDate = setTagAttrAndHTML('div', 'task-due-date', 'Due Date: '+ element.due_date, null, null, null);
+    const taskDueTime = setTagAttrAndHTML('div', 'task-due-time', 'Due Time: ' + element.due_time, null, null, null);
 
     taskDetails.appendChild(taskDescription);
     taskDetails.appendChild(taskDueDate);

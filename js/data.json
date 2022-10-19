@@ -3,24 +3,24 @@
         "id": "1",
         "title": "Web Development Mid-term",
         "description": "Learn the HTML basics, CSS3, and JavaScript",
-        "due_date": "10-26-2022",
-        "due_time": "12:00 AM",
+        "due_date": "2022-10-26",
+        "due_time": "12:00",
         "status": "open"
     },
     {
         "id": "2",
         "title": "Practice Data Structures",
         "description": "Learn Link List, Stack, Queue, and Tree",
-        "due_date": "12-01-2022",
-        "due_time": "12:00 PM",
+        "due_date": "2022-10-26",
+        "due_time": "15:00",
         "status": "open"
     },
     {
         "id": "3",
         "title": "Practice Algorithms",
         "description": "Learn Sorting, Searching, and Graph",
-        "due_date": "12-01-2022",
-        "due_time": "08:00 AM",
+        "due_date": "2022-03-18",
+        "due_time": "08:00",
         "status": "open"
     }
 ]
