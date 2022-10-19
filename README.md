@@ -7,11 +7,12 @@
 ## Folder Structure
 
 index.html - The main HTML file <br>
-scss - The SCSS folder <br>
-&ensp;- main.scss - The main SCSS file <br>
+scss - The SCSS folder with main.scss as the entry point<br>
+&ensp;&ensp;- main.scss - The main SCSS file <br>
 js - The JS folder <br>
-&ensp; - script.js - The main JS file <br>
-&ensp; - data.json - The JSON file containing the data <br>
+&ensp;&ensp;- helper - Helper functions for script.js <br>
+&ensp;&ensp; - script.js - The main JS file <br>
+&ensp;&ensp; - data.json - The JSON file containing the data <br>
 package.json - contains the dependencies for the program <br>
 
 ## Requirements
