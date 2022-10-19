@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Add task button
+   ========================================================================== */
+/**
+* Creates a button to add tasks
+* The button is displayed at the bottom of the page
+* The button is fixed at the bottom of the page
+*/
+.add-task {
+    display: flex;
+    justify-content: center;
+    button {
+        width: 60px;
+        height: 60px;
+        font-size: 32px;
+        border-radius: 50%;
+        border: none;
+        background: #2876d0;
+        color: white;
+        padding-bottom: 5px;
+        z-index: 999;
+        transition: all 0.5s ease-in-out;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #123b70;
+    }
+}

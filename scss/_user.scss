@@ -1,0 +1,31 @@
+/* ==========================================================================
+    User Styles
+   ========================================================================== */
+/**
+* Creates a two column layout div with user name and number of tasks remaining on the left 
+* and user profile picture on the right
+*/ 
+.user-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 32px 0 72px 0;
+    .user-profile__info {
+      
+        .user-profile__name {
+            font-size: 3rem;
+            color: rgb(50, 47, 47);
+            margin: 0;
+        }
+        .user-profile__tasks {
+            font-size: 1rem;
+            color: rgb(161, 154, 154);
+           
+        }
+    }
+    .user-profile__image {
+        img {
+            height: 70px;
+        }
+    }
+}

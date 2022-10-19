@@ -1,0 +1,41 @@
+/* ==========================================================================
+   Dialog box with add tasks form inside
+   ========================================================================== */
+/**
+* Creates a dialog box with add tasks form inside
+* The dialog box is hidden by default
+* The dialog box is displayed when the add task button is clicked
+* The dialog box is hidden when the cancel button is clicked
+* The error div is hidden by default
+*/
+.dialog {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    background-color: white;
+    position: fixed;
+    top: 100vh;
+    .close-button {
+        button {
+            border: none;
+            background: none;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    }
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 60%;
+        .form__group {
+            .error {
+                color: red;
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

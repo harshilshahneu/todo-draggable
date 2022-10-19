@@ -1,0 +1,81 @@
+/* ==========================================================================
+   TODO task list
+   ========================================================================== */
+/**
+* Creates a list of tasks with list-style as none with each list item displaying the task name
+* and a collapsible button
+* The task description, due date and due time are hidden by default 
+* The task div overlaps on another div: .task-completion by default
+* The .task-completed tag is hidden by default
+*/
+.task-list {
+    list-style: none;
+    padding: 0;
+    height: 63vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 63vh;
+    li {
+        margin: 18px 0;
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        position: relative;
+        transition: all 0.3s ease;
+        .task {
+            padding: 20px;
+            position: relative;
+            background-color: white;
+            cursor: grab;
+            user-select: none;
+            transition: all 0.3s ease;
+            &:active {
+                cursor: grabbing;
+            }
+            .completed-task-tag {
+                display: none;
+                justify-content: end;
+              
+                div {
+                    color: white;
+                    background-color: #3ebc3e;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                }
+            }
+            .task-title {
+                padding: 16px;
+                display: flex;
+                justify-content: space-between;
+                .task-header {
+                    font-size: 1.5em;
+                    font-weight: bold; 
+                }
+                .collapsible {
+                    pointer-events: auto;
+                }
+            }
+            .task-details {
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                .task-due-date {
+                    font-size: 1em;
+                    color: rgb(161, 154, 154);
+                }
+            }
+        }
+        .task-completion {
+            top: 0;
+            left: 0;
+            height: 100%;
+            display: flex;
+            padding: 0px 18px;
+            align-items: center;
+            background: #3ebc3e;
+            position: absolute;
+            img {
+                height: 30%;
+            }
+        }
+    }
+}

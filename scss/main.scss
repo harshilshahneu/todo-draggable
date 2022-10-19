@@ -1,156 +1,25 @@
+
+/* ==========================================================================
+   SCSS file imports
+   ========================================================================== */
+
+@import 'user';
+@import 'dialog';
+@import 'task';
+@import 'add';
+
+/* ==========================================================================
+   Website Font
+   ========================================================================== */
 * {
     font-family: sans-serif;
 }
 
+/* ==========================================================================
+   Wrapper for TODO app
+   ========================================================================== */
 .container {
     max-width: 540px;
     margin: 0 auto;
-    .user-profile {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 32px 0 72px 0;
-        .user-profile__info {
-          
-            .user-profile__name {
-                font-size: 3rem;
-                color: rgb(50, 47, 47);
-                margin: 0;
-            }
-            .user-profile__tasks {
-                font-size: 1rem;
-                color: rgb(161, 154, 154);
-               
-            }
-        }
-        .user-profile__image {
-            img {
-                height: 70px;
-            }
-        }
-    }
-    .task-list {
-        list-style: none;
-        padding: 0;
-        height: 63vh;
-        overflow-y: auto;
-        overflow-x: hidden;
-        max-height: 63vh;
-        li {
-            margin: 18px 0;
-            border: 1px solid #dddddd;
-            border-radius: 5px;
-            position: relative;
-            transition: all 0.3s ease;
-            .task {
-                padding: 20px;
-                position: relative;
-                background-color: white;
-                cursor: grab;
-                user-select: none;
-                transition: all 0.3s ease;
-                &:active {
-                    cursor: grabbing;
-                }
-                .completed-task-tag {
-                    display: none;
-                    justify-content: end;
-                  
-                    div {
-                        color: white;
-                        background-color: #3ebc3e;
-                        padding: 5px 10px;
-                        border-radius: 5px;
-                    }
-                }
-                .task-title {
-                    padding: 16px;
-                    display: flex;
-                    justify-content: space-between;
-                    .task-header {
-                        font-size: 1.5em;
-                        font-weight: bold; 
-                    }
-                    .collapsible {
-                        pointer-events: auto;
-                    }
-                }
-                .task-details {
-                    max-height: 0;
-                    overflow: hidden;
-                    transition: all 0.3s ease;
-                    .task-due-date {
-                        font-size: 1em;
-                        color: rgb(161, 154, 154);
-                    }
-                }
-            }
-            .task-completion {
-                top: 0;
-                left: 0;
-                height: 100%;
-                display: flex;
-                padding: 0px 18px;
-                align-items: center;
-                background: #3ebc3e;
-                position: absolute;
-                img {
-                    height: 30%;
-                }
-            }
-        }
-    }
-    .add-task {
-        display: flex;
-        justify-content: center;
-        button {
-            width: 60px;
-            height: 60px;
-            font-size: 32px;
-            border-radius: 50%;
-            border: none;
-            background: #2876d0;
-            color: white;
-            padding-bottom: 5px;
-            z-index: 999;
-            transition: all 0.5s ease-in-out;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #123b70;
-        }
-    }
-
 }
 
-.dialog {
-    display: none;
-    height: 100vh;
-    width: 100vw;
-    opacity: 0;
-    transition: all 1s ease-in-out;
-    background-color: white;
-    position: fixed;
-    top: 100vh;
-    .close-button {
-        button {
-            border: none;
-            background: none;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-    }
-    .form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 60%;
-        .form__group {
-            .error {
-                color: red;
-                font-size: 0.8rem;
-            }
-        }
-    }
-}
