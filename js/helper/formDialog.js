@@ -1,18 +1,25 @@
+//import helper function
 import createTaskElement from './createTaskElement.js';
+
+//Set the default value of dialogBoundingClientHeight and get add button style
 let dialogBoundingClientHeight = 0;
 const addButton = document.querySelector('#add-button').style;
-//show add task form
+
+//Function to open the add task form dialog or add data to the TODO list based on state of UI 
 export function openAddTaskForm() {
     const dialogStyle = document.querySelector('.dialog').style;
+
+    //Check if the dialog is open or not
     if(dialogStyle.display === 'block') {
-      //add event to the list
+      
+        //Get the values from the form
         const title = document.querySelector('#title').value;
         const description = document.querySelector('#description').value;
         const due_date = document.querySelector('#due-date').value;
         const due_time = document.querySelector('#due-time').value;
 
+        //Validate the form fields
         let valid = true;
-        //valid = validateField(title, 'title') && validateField(description, 'description') && validateField(due_date, 'due-date') && validateField(due_time, 'due-time');
         if(!validateField(title, 'title'))
             valid = false;
         if(!validateField(description, 'description'))
@@ -22,6 +29,7 @@ export function openAddTaskForm() {
         if(!validateField(due_time, 'due-time'))
             valid = false;
         
+        //If all the fields are valid then add the task to the TODO list and close the dialog
         if(valid){
             const data = {
                 id: document.querySelectorAll('.task-list li').length + 1,
@@ -38,6 +46,7 @@ export function openAddTaskForm() {
         }
     }
     else {
+        //Open the dialog with animation
         dialogStyle.display = 'block';
         setTimeout(() => {
             const dialogBoundingClientHeight = document.querySelector('.dialog').getBoundingClientRect().y
@@ -50,6 +59,8 @@ export function openAddTaskForm() {
     }
 }
 
+
+//Function to close the add task form dialog with animation
 export function closeDialog() {
     document.querySelector('.dialog').style.transform = 'translateY(' + dialogBoundingClientHeight + 'px)';
     addButton.width = '60px';
@@ -60,6 +71,7 @@ export function closeDialog() {
     }, 1000);
 }
 
+//Function to reset the form fields and remove the error messages
 function resetForm() {
     document.querySelector('#title').style.border = '1px solid black';
     document.getElementById('title-error').innerHTML = '';
@@ -72,6 +84,7 @@ function resetForm() {
     document.querySelector('.form').reset();
 }
 
+//Function to validate the form fields
 function validateField(value, filedName) {
     if(!value) {
         document.querySelector('#' + filedName).style.border = '1px solid red';

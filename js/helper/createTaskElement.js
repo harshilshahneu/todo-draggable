@@ -1,4 +1,7 @@
+//Function to create a task element
 export default function createTaskElement(element) {
+
+    //Create the task element structure and append event listeners to appropriate elements
     const li = setTagAttrAndHTML('li', null, null, 'id_' + element.id, element.status, null);
     const taskCompletion = setTagAttrAndHTML('div', 'task-completion', null, null, null, null);
     const checkMark = setTagAttrAndHTML('img', null, null, null, null, 'img/checked.png');
@@ -12,6 +15,8 @@ export default function createTaskElement(element) {
     const taskTitle = setTagAttrAndHTML('div', 'task-title', null, null, null, null);
     const taskHeader = setTagAttrAndHTML('div', 'task-header', element.title, null, null, null);
     const collapsibleButton = setTagAttrAndHTML('button', 'collapsible', '+', 'collapsible-' + element.id, null, null);
+
+    //Add event listener to the collapsible button to toggle the task description
     collapsibleButton.addEventListener('click', e => {
         const id = e.currentTarget.parentElement.parentElement.parentElement.id;
         const collapsible = document.querySelector('#' + id + '>.task>.task-details');
@@ -40,6 +45,8 @@ export default function createTaskElement(element) {
     task.appendChild(completedTaskTag);
     task.appendChild(taskTitle);
     task.appendChild(taskDetails);
+
+    //Attach event listeners to the task element
     task.addEventListener('mousedown', dragElement);
 
     li.appendChild(taskCompletion);
@@ -48,6 +55,7 @@ export default function createTaskElement(element) {
     document.querySelector('.task-list').prepend(li);
 }
 
+// Function to set attributes and HTML content to a tag
 function setTagAttrAndHTML(tag, className, htmlText, id, data, src) {
     const element = document.createElement(tag);
     if(className)
@@ -63,15 +71,23 @@ function setTagAttrAndHTML(tag, className, htmlText, id, data, src) {
     return element;
 }
 
+// Function to drag the task element and mark it as completed if dragged to the right till a certain threshold
 function dragElement(event) {
     
     const element = event.currentTarget;
     const startPoint = event.clientX;
     let diff = 0;
     const id = element.parentElement.id;
+
+    //Attach event listeners till the mouse is up
     document.addEventListener('mousemove', mouseMoveHandler);
     document.addEventListener('mouseup', mouseUpHandler);
 
+    /** 
+     * Function to handle the mouse move event
+     * Calculate the difference between the start point and the current point
+     * translate the element by the difference to the X axis only
+     **/
     function mouseMoveHandler(e){
         let currentPoint = e.clientX;
         diff = startPoint - currentPoint;
@@ -80,6 +96,15 @@ function dragElement(event) {
         }
        
     }
+
+    /**
+     * Function to handle the mouse up event
+     * If the difference is greater than a certain threshold, mark the task as completed and
+     * make pointer events as none so that the element cannot be dragged again
+     * Reset the element to its original position
+     * Update the task count
+     * Remove the event listeners
+     */
     function mouseUpHandler(e){
         if(diff <=  -document.querySelector('#'+ id + '>.task-completion').offsetWidth) {
             const node = document.querySelector('#' + id);
@@ -97,7 +122,6 @@ function dragElement(event) {
                     else {
                         document.querySelector('.user-profile__tasks').innerHTML = "Yay! You have no tasks remaining";
                     }
-                   // document.querySelector('.user-profile__tasks').innerHTML = "You have " + document.querySelectorAll('[data="open"]').length + " tasks remaining";
                     node.style.opacity = 1;
                 }, 10);
             }, 300);
