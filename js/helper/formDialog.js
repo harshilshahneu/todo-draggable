@@ -20,14 +20,10 @@ export function openAddTaskForm() {
 
         //Validate the form fields
         let valid = true;
-        if(!validateField(title, 'title'))
-            valid = false;
-        if(!validateField(description, 'description'))
-            valid = false;
-        if(!validateField(due_date, 'due-date'))
-            valid = false;
-        if(!validateField(due_time, 'due-time'))
-            valid = false;
+        valid = validateField(title, 'title') && valid;
+        valid = validateField(description, 'description') && valid;
+        valid = validateField(due_date, 'due-date') && valid;
+        valid = validateField(due_time, 'due-time') && valid;
         
         //If all the fields are valid then add the task to the TODO list and close the dialog
         if(valid){
@@ -89,6 +85,9 @@ function validateField(value, filedName) {
     if(!value) {
         document.querySelector('#' + filedName).style.border = '1px solid red';
         document.getElementById(filedName + '-error').innerHTML = filedName + ' is required';
+    } else { //If the field is valid then remove the error message
+        document.querySelector('#' + filedName).style.border = '1px solid black';
+        document.getElementById(filedName + '-error').innerHTML = '';
     }
     return !!value;
 }
